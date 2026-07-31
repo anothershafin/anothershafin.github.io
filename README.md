@@ -85,6 +85,35 @@ The polaroid's caption text ("ML Engineer Intern @ ...", "B.Sc. in CSE — ...")
 it's pulled automatically from the **"Currently"** and **"Education"** entries in `ABOUT.facts`
 inside `data.js`. Edit those two facts and the polaroid updates too.
 
+### Social media preview image (the photo that shows when your link is shared)
+
+When you paste your site's link into WhatsApp, LinkedIn, Facebook, Discord, Slack, X/Twitter, etc.,
+those platforms read special `<meta property="og:...">` tags in the page's `<head>` to build a
+preview card — that's what controls the photo/title/description that pops up.
+
+There are two separate preview images — replace either file (same file name — no code edits needed):
+
+- **`assets/img/main_featured.png`** → used when the home page link (`anothershafin.github.io`) is shared
+- **`assets/img/cert_featured.png`** → used when the certifications page link is shared
+
+- **Recommended size: 1200 × 630px** (the standard social-preview ratio — most platforms crop to
+  this, so designing at this exact size avoids awkward cropping).
+- JPG or PNG, ideally under ~1–2 MB so it loads fast.
+- Good content for this image: your name, title/role, and a clean background — think "business
+  card", not a plain selfie. A version with the logo and a tagline reads well at thumbnail size.
+
+Since this preview image needs an internet-crawlable **absolute URL** (not a relative path), the
+`<meta>` tags point directly at `https://anothershafin.github.io/assets/img/main_featured.png` (and
+the `cert_featured.png` equivalent on the certifications page). This only works once the site is
+live on GitHub Pages — it won't preview correctly from `file://` or `localhost`.
+
+**After you swap the file, test it** with a link-preview debugger (paste your live URL in):
+- Facebook/Instagram: https://developers.facebook.com/tools/debug/
+- LinkedIn: https://www.linkedin.com/post-inspector/
+- Twitter/X: share a DM to yourself, or use https://cards-dev.twitter.com/validator (may require login)
+
+These tools also let you force a re-scrape if a platform cached your old preview.
+
 ---
 
 ## 🎨 Changing colours
