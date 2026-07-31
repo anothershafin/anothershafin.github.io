@@ -1,0 +1,11 @@
+Drop your certificate images in THIS folder using these exact names
+(they are what data.js currently points to). JPG or PNG. Best size: 4:3.
+
+brand-representative.jpg    -> Brand Representative Program 6.0 (Interactive Cares)
+supervised-ml.jpg           -> Supervised Machine Learning (DeepLearning.AI)
+crash-course-python.jpg     -> Crash Course on Python (Google)
+get-started-python.jpg      -> Get Started with Python (Google)
+html-css-js.jpg             -> HTML, CSS, and JavaScript for Web Developers (Johns Hopkins)
+web-dev-advanced.jpg        -> Web Development (Advanced Level) (BRAC University)
+
+Until a file exists, the card shows an issuer badge placeholder automatically.

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shafin Ahmed — AI & ML Researcher · Developer</title>
+  <meta name="description" content="Portfolio of Shafin Ahmed — AI & Bioinformatics Researcher, Machine Learning Engineer and Django Developer based in Dhaka, Bangladesh." />
+  <meta name="author" content="Shafin Ahmed" />
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shafin Ahmed — Portfolio" />
+  <meta property="og:description" content="AI & Bioinformatics Researcher · Machine Learning Engineer · Django Developer" />
+  <meta property="og:image" content="assets/img/Linkedin%20DP%20Squared.jpg" />
+
+  <link rel="icon" type="image/png" href="assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="nav">
+    <div class="container">
+      <a class="brand" href="#home" aria-label="Home">
+        <img src="assets/img/logo.png" alt="Shafin Ahmed logo" />
+        <span>Shafin<b>.</b></span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="#contact">Let's talk</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero container" id="home">
+      <div class="hero-grid">
+        <div id="hero-content"><!-- rendered by main.js --></div>
+        <div class="hero-photo reveal d2">
+          <div class="ring">
+            <img src="assets/img/Linkedin DP Squared.jpg" alt="Portrait of Shafin Ahmed" />
+          </div>
+          <div class="hero-chip c1"><span class="ic">🤖</span><span>Machine Learning<small>Research &amp; models</small></span></div>
+          <div class="hero-chip c2"><span class="ic">🐍</span><span>Python<small>Django · Data Science</small></span></div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll down">
+        <span class="mouse"></span>
+        Scroll
+      </a>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">About me</span>
+          <h2 class="section-title">A little <span class="grad">about myself</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text" id="about-text"><!-- rendered --></div>
+          <div class="facts" id="about-facts"><!-- rendered --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Where I've worked</span>
+          <h2 class="section-title">Experience &amp; <span class="grad">roles</span></h2>
+        </div>
+        <div class="timeline" id="timeline"><!-- rendered --></div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">What I work with</span>
+          <h2 class="section-title">Skills &amp; <span class="grad">technologies</span></h2>
+          <p>A snapshot of the languages, frameworks and tools I use to build, analyze and ship.</p>
+        </div>
+        <div id="skills-groups"><!-- rendered --></div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Selected work</span>
+          <h2 class="section-title">Projects I've <span class="grad">built</span></h2>
+          <p>From machine-learning research pipelines to full-stack web apps and clean Python tools.</p>
+        </div>
+        <div class="filters" id="project-filters"><!-- rendered --></div>
+        <div class="projects-grid" id="projects-grid"><!-- rendered --></div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Get in touch</span>
+          <h2 class="section-title">Let's build something <span class="grad">together</span></h2>
+          <p>Open to research collaborations, internships and interesting problems. My inbox is always open.</p>
+        </div>
+        <div class="contact-wrap">
+          <div class="contact-card reveal">
+            <div class="contact-list" id="contact-list"><!-- rendered --></div>
+          </div>
+          <div class="contact-card cta reveal d1">
+            <h3>Have an idea or opportunity?</h3>
+            <p>Whether it's a machine-learning problem, a web project or a research idea — I'd love to hear from you. Drop me a message and I'll get back soon.</p>
+            <a class="btn btn-primary" id="contact-cta-btn" href="#">Say hello ✉️</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <a class="brand" href="#home">
+          <img src="assets/img/logo.png" alt="logo" />
+          <span class="site-name">Shafin Ahmed</span>
+        </a>
+        <div class="footer-socials" id="footer-socials"><!-- rendered --></div>
+      </div>
+      <p class="footer-copy">© <span class="year"></span> <b class="site-name">Shafin Ahmed</b>. Designed &amp; built with care.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" aria-label="Back to top"></button>
+  <script>document.getElementById('to-top').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';</script>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+Drop your project screenshots in THIS folder using these exact names
+(they are what data.js currently points to). JPG or PNG. Best size: 16:9 (e.g. 1280x720).
+
+prob-calibration.jpg        -> Probability Calibration in Tree-Based Models
+breast-cancer.jpg           -> Breast Cancer Prediction from Gene Expression
+loan-approval.jpg           -> Loan Approval Prediction
+campus-companion.jpg        -> Campus Companion
+musafir.jpg                 -> Project Musafir
+bookarc.jpg                 -> The BookArc
+dice-game.jpg               -> Dice Rolling Game
+currency-converter.jpg      -> Currency Converter
+qr-generator.jpg            -> QR Code Generator
+rock-paper-scissors.jpg     -> Rock Paper Scissors
+number-guessing.jpg         -> The Number Guessing Game
+
+Until a file exists, the card shows a tidy gradient placeholder automatically.
