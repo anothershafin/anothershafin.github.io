@@ -79,6 +79,18 @@
       <div class="hero-socials reveal d4">${socials}</div>`;
   }
 
+  function renderHeroPolaroid() {
+    const box = $("#polaroid-caption");
+    if (!box) return;
+    const factByLabel = (label) => ABOUT.facts.find((f) => f.label === label);
+    const rows = [factByLabel("Currently"), factByLabel("Education")].filter(Boolean);
+    box.innerHTML = rows
+      .map(
+        (f, i) => `<div class="cap-row${i > 0 ? " sub" : ""}"><span class="ic">${f.icon}</span> ${esc(f.value)}</div>`
+      )
+      .join("");
+  }
+
   function renderAbout() {
     const p = $("#about-text");
     if (p) p.innerHTML = ABOUT.paragraphs.map((t) => `<p class="reveal">${esc(t)}</p>`).join("");
@@ -338,6 +350,7 @@
   /* ---------- boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     renderHero();
+    renderHeroPolaroid();
     renderAbout();
     renderExperience();
     renderSkills();

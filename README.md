@@ -76,11 +76,14 @@ Use those names and the images appear automatically — no code changes needed.
 JPG or PNG both work.
 
 ### Swapping the profile photo or logo
-- Profile photo → replace `assets/img/profile.jpg`
+- Hero photo (the polaroid) → replace `assets/img/DP_wbg_2.png`. Use a **transparent PNG**
+  cut out around your upper body — the polaroid window crops it into a square and lets your
+  head/shoulders pop up out of the frame, so a background-removed photo looks best.
 - Logo / favicon → replace `assets/img/logo.png` (and `favicon-32.png`, `apple-touch-icon.png`)
 
-> The hero currently uses one of your teal-backdrop photos. To use the **suit** version,
-> just save it over `assets/img/profile.jpg` (keep the same name).
+The polaroid's caption text ("ML Engineer Intern @ ...", "B.Sc. in CSE — ...") isn't hardcoded —
+it's pulled automatically from the **"Currently"** and **"Education"** entries in `ABOUT.facts`
+inside `data.js`. Edit those two facts and the polaroid updates too.
 
 ---
 
@@ -132,7 +135,7 @@ Portfolio Site/
     ├── js/data.js          # ← YOUR CONTENT lives here
     ├── js/main.js          # Rendering + interactions (rarely needs editing)
     └── img/
-        ├── profile.jpg     # Hero photo
+        ├── DP_wbg_2.png    # Hero photo (transparent cutout, in the polaroid)
         ├── logo.png        # Logo / favicon source
         ├── projects/       # Project screenshots
         └── certs/          # Certificate images
