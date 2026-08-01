@@ -107,6 +107,32 @@ const EXPERIENCE = [
 ];
 
 /* ----------------------------------------------------------------------------
+   3b) EXPERIENCE STATS  (the 3 animated number cards under the timeline)
+   value  -> the number it counts up to (plain number, no "+")
+   suffix -> shown right after the number once counting finishes, e.g. "+"
+   ---------------------------------------------------------------------------- */
+const EXPERIENCE_STATS = [
+  {
+    value: 500,
+    suffix: "+",
+    label: "Classes Taught",
+    sub: "Physics Instructor, UDVASH — since 2022",
+  },
+  {
+    value: 200,
+    suffix: "+",
+    label: "Book Publications (2023)",
+    sub: "Leading a supervised team of 30",
+  },
+  {
+    value: 6,
+    suffix: "",
+    label: "Academic Books Authored",
+    sub: "For Higher Secondary students",
+  },
+];
+
+/* ----------------------------------------------------------------------------
    4) SKILLS  (grouped). Each skill's "icon" points to a logo bundled in
    assets/img/skills/<icon>.svg  (kept local so the site works offline & fast).
    To ADD a new skill logo: download its SVG from https://devicon.dev into
@@ -164,8 +190,11 @@ const SKILL_GROUPS = [
 /* ----------------------------------------------------------------------------
    5) PROJECTS
    ---------------------------------------------------------------------------
-   category  -> used by the filter buttons. Keep it one of:
-               "Machine Learning", "Web", "Python"
+   category  -> which group this shows under on the full Projects page. Keep
+               it one of: "Machine Learning", "Web", "Python"
+   featured  -> true = shown in the "Selected Projects" teaser on the home
+               page (keep this to just 2-3 of your best projects). Every
+               project — featured or not — always appears on projects.html.
    tech      -> small tags shown on the card
    image     -> screenshot/thumbnail (drop file in assets/img/projects/)
    repo      -> GitHub link ("" hides the button)
@@ -204,6 +233,7 @@ const PROJECTS = [
     org: "BRAC University · CSE422",
     period: "Jul 2025 – Sep 2025",
     category: "Machine Learning",
+    featured: true,
     description:
       "An end-to-end workflow predicting loan-approval eligibility. Handles class imbalance while optimizing Accuracy, Precision, Recall and ROC-AUC — covering data loading, EDA, cleaning, encoding, scaling, supervised modeling, metric visualization and an unsupervised KMeans baseline.",
     tech: ["Python", "Machine Learning", "EDA", "KMeans"],
@@ -216,7 +246,6 @@ const PROJECTS = [
     org: "BRAC University · CSE470",
     period: "2025 – Aug 2025",
     category: "Web",
-    featured: true,
     description:
       "A MERN-stack resource-sharing platform that lets students organize all of their study resources and daily tasks in one place.",
     tech: ["MongoDB", "Express", "React", "Node.js"],

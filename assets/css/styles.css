@@ -252,7 +252,7 @@ ul { list-style: none; }
 .fact .val { font-weight: 600; font-family: var(--font-head); font-size: 0.98rem; line-height: 1.35; }
 
 /* ---------- Experience timeline ---------- */
-.timeline { position: relative; margin-left: 8px; }
+.timeline { position: relative; margin-left: 8px; margin-top: 48px; }
 .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), transparent); }
 .tl-item { position: relative; padding: 0 0 34px 38px; }
 .tl-item::before {
@@ -264,6 +264,17 @@ ul { list-style: none; }
 .tl-role { font-family: var(--font-head); font-weight: 700; font-size: 1.16rem; margin-top: 4px; }
 .tl-org { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
 .tl-desc { color: var(--muted); font-size: 0.96rem; }
+
+/* ---------- Experience stats ---------- */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 28px 26px; transition: transform 0.25s var(--ease), border-color 0.25s;
+}
+.stat-card:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+.stat-num { font-family: var(--font-head); font-weight: 700; font-size: clamp(2.1rem, 4vw, 2.7rem); line-height: 1; color: var(--accent-2); }
+.stat-label { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--text); margin-top: 16px; }
+.stat-sub { color: var(--muted); font-size: 0.88rem; margin-top: 6px; }
 
 /* ---------- Skills ---------- */
 .skill-group { margin-bottom: 34px; }
@@ -286,17 +297,18 @@ ul { list-style: none; }
 .skill span { font-weight: 600; font-family: var(--font-head); font-size: 0.94rem; }
 
 /* ---------- Projects ---------- */
-.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
-.filter-btn {
-  padding: 9px 18px; border-radius: 999px; cursor: pointer;
-  background: var(--surface); border: 1px solid var(--border); color: var(--muted);
-  font-family: var(--font-head); font-weight: 500; font-size: 0.88rem;
-  transition: all 0.22s var(--ease);
-}
-.filter-btn:hover { color: var(--text); border-color: var(--border-strong); }
-.filter-btn.active { background: var(--accent-grad); color: #04121f; border-color: transparent; font-weight: 600; }
-
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; }
+.projects-cta { text-align: center; margin-top: 40px; }
+
+/* Category subtitles on the full Projects page */
+.project-category { margin-bottom: 56px; }
+.project-category:last-child { margin-bottom: 0; }
+.cat-title {
+  font-family: var(--font-head); font-weight: 700; font-size: 1.4rem;
+  margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.cat-title::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-grad); flex: none; }
 .pcard {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--surface-solid); border: 1px solid var(--border); border-radius: var(--radius);
@@ -304,7 +316,6 @@ ul { list-style: none; }
   opacity: 1;
 }
 .pcard:hover { transform: translateY(-8px); border-color: var(--border-strong); box-shadow: var(--shadow); }
-.pcard.hide { display: none; }
 .pcard-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg-soft); }
 .pcard-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
 .pcard:hover .pcard-media img { transform: scale(1.06); }
@@ -453,10 +464,12 @@ ul { list-style: none; }
   .nav-cta { margin: 6px 0 0; }
   .nav-toggle { display: block; }
   .facts { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .section-head { margin-bottom: 38px; }
 }
 @media (max-width: 460px) {
   .projects-grid, .cert-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
   .btn { width: 100%; justify-content: center; }
   .hero-actions { flex-direction: column; }
 }

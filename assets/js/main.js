@@ -120,6 +120,18 @@
     ).join("");
   }
 
+  function renderExperienceStats() {
+    const box = $("#exp-stats");
+    if (!box) return;
+    box.innerHTML = EXPERIENCE_STATS.map(
+      (s, i) => `<div class="stat-card reveal d${(i % 4) + 1}">
+        <div class="stat-num" data-target="${s.value}" data-suffix="${esc(s.suffix || "")}">0${esc(s.suffix || "")}</div>
+        <div class="stat-label">${esc(s.label)}</div>
+        <div class="stat-sub">${esc(s.sub)}</div>
+      </div>`
+    ).join("");
+  }
+
   function renderSkills() {
     const box = $("#skills-groups");
     if (!box) return;
@@ -172,35 +184,31 @@
     </article>`;
   }
 
-  function renderProjects() {
+  // Category display order used on the full Projects page.
+  const PROJECT_CAT_ORDER = ["Machine Learning", "Web", "Python"];
+
+  function renderFeaturedProjects() {
     const grid = $("#projects-grid");
     if (!grid) return;
-    // Group by category in this order: Machine Learning, then Web, then Python.
-    // (Array.sort is stable, so within each group the data.js order — by date — is kept.)
-    const CAT_ORDER = ["Machine Learning", "Web", "Python"];
-    const rank = (c) => { const i = CAT_ORDER.indexOf(c); return i === -1 ? 99 : i; };
-    const ordered = [...PROJECTS].sort((a, b) => rank(a.category) - rank(b.category));
-    grid.innerHTML = ordered.map(projectCard).join("");
+    grid.innerHTML = PROJECTS.filter((p) => p.featured).map(projectCard).join("");
+  }
 
-    // Build filter buttons from the categories that exist.
-    const cats = ["All", ...new Set(PROJECTS.map((p) => p.category))];
-    const bar = $("#project-filters");
-    if (bar) {
-      bar.innerHTML = cats
-        .map((c, i) => `<button class="filter-btn${i === 0 ? " active" : ""}" data-filter="${esc(c)}">${esc(c)}</button>`)
-        .join("");
-      bar.addEventListener("click", (e) => {
-        const btn = e.target.closest(".filter-btn");
-        if (!btn) return;
-        $$(".filter-btn", bar).forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        const f = btn.dataset.filter;
-        $$(".pcard", grid).forEach((card) => {
-          const show = f === "All" || card.dataset.cat === f;
-          card.classList.toggle("hide", !show);
-        });
-      });
-    }
+  function renderAllProjects() {
+    const box = $("#all-projects");
+    if (!box) return;
+    const present = new Set(PROJECTS.map((p) => p.category));
+    const cats = PROJECT_CAT_ORDER.filter((c) => present.has(c)).concat(
+      [...present].filter((c) => !PROJECT_CAT_ORDER.includes(c))
+    );
+    box.innerHTML = cats
+      .map((cat) => {
+        const items = PROJECTS.filter((p) => p.category === cat);
+        return `<div class="project-category">
+          <h3 class="cat-title reveal">${esc(cat)}</h3>
+          <div class="projects-grid">${items.map(projectCard).join("")}</div>
+        </div>`;
+      })
+      .join("");
   }
 
   function renderCertifications() {
@@ -347,14 +355,47 @@
     items.forEach((i) => obs.observe(i));
   }
 
+  function countUpStats() {
+    const nums = $$(".stat-num[data-target]");
+    if (!nums.length) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finish = (el) => { el.textContent = el.dataset.target + el.dataset.suffix; };
+    const animate = (el) => {
+      if (reduceMotion || !("requestAnimationFrame" in window)) { finish(el); return; }
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || "";
+      const duration = 1400;
+      const start = performance.now();
+      const ease = (t) => 1 - Math.pow(1 - t, 3); // ease-out cubic
+      (function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(target * ease(p)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else finish(el);
+      })(start);
+    };
+    if (!("IntersectionObserver" in window)) { nums.forEach(animate); return; }
+    const obs = new IntersectionObserver(
+      (entries, o) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { animate(en.target); o.unobserve(en.target); }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    nums.forEach((n) => obs.observe(n));
+  }
+
   /* ---------- boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     renderHero();
     renderHeroPolaroid();
     renderAbout();
     renderExperience();
+    renderExperienceStats();
     renderSkills();
-    renderProjects();
+    renderFeaturedProjects();
+    renderAllProjects();
     renderCertifications();
     renderContact();
     renderFooter();
@@ -363,5 +404,6 @@
     scrollSpy();
     // reveal after content is injected
     requestAnimationFrame(reveal);
+    requestAnimationFrame(countUpStats);
   });
 })();
