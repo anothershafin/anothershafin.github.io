@@ -28,6 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/css/scroll-hero.css?v=1" />
+  <link rel="preload" as="image" href="assets/img/hero-frames/frame_001.jpg" />
 </head>
 <body>
   <div class="progress" id="progress"></div>
@@ -56,14 +58,60 @@
   </header>
 
   <main>
-    <!-- ===================== PAGE HERO ===================== -->
-    <section class="page-hero container">
-      <div class="breadcrumb reveal">
-        <a href="index.html">Home</a><span>/</span><span>Projects</span>
+    <!-- ===================== SCROLL-DRIVEN PAGE HERO =====================
+         Each .sh-step declares the FRAME RANGE it stays visible for.
+         There are 120 frames in assets/img/hero-frames/ and the beats are:
+           1– 25  title
+          26– 50  lead paragraph
+          51– 71  Machine Learning count
+          72– 92  Web count
+          93–106  Python count
+         107–120  clean tail, then the project lists scroll up underneath.
+    ================================================================== -->
+    <section class="scroll-hero" id="scroll-hero">
+      <div class="sh-sticky">
+        <canvas class="sh-canvas"></canvas>
+        <div class="sh-glow"></div>
+        <div class="sh-veil"></div>
+
+        <div class="sh-stage">
+          <div class="sh-step" data-from="1" data-to="25">
+            <div class="breadcrumb sh-breadcrumb">
+              <a href="index.html">Home</a><span>/</span><span>Projects</span>
+            </div>
+            <span class="kicker">All projects</span>
+            <h1 class="sh-title">Everything I've <span class="grad">built</span></h1>
+          </div>
+
+          <div class="sh-step" data-from="26" data-to="50">
+            <p class="sh-lead">From machine-learning research pipelines to full-stack web apps and clean Python tools — every project, grouped by category.</p>
+          </div>
+
+          <div class="sh-step sh-step--count" data-from="51" data-to="71">
+            <span class="sh-count">3</span>
+            <span class="sh-count-label">Machine Learning projects</span>
+          </div>
+
+          <div class="sh-step sh-step--count" data-from="72" data-to="92">
+            <span class="sh-count">3</span>
+            <span class="sh-count-label">Web Development projects</span>
+          </div>
+
+          <div class="sh-step sh-step--count" data-from="93" data-to="106">
+            <span class="sh-count">5</span>
+            <span class="sh-count-label">Python projects</span>
+          </div>
+        </div>
+
+        <div class="sh-rail"><i></i></div>
+
+        <a href="#all-projects" class="scroll-cue sh-cue" aria-label="Scroll down">
+          <span class="mouse"></span>
+          Scroll
+        </a>
+
+        <div class="sh-loader"><span>Loading</span><b></b></div>
       </div>
-      <span class="kicker reveal">All projects</span>
-      <h1 class="reveal d1">Everything I've <span class="grad">built</span></h1>
-      <p class="reveal d2">From machine-learning research pipelines to full-stack web apps and clean Python tools — every project, grouped by category.</p>
     </section>
 
     <!-- ===================== ALL PROJECTS (grouped by category) ===================== -->
@@ -93,5 +141,16 @@
 
   <script src="assets/js/data.js?v=4"></script>
   <script src="assets/js/main.js?v=4"></script>
+
+  <!-- Scroll-driven hero -->
+  <script src="assets/js/scroll-hero.js?v=1"></script>
+  <script>
+    initScrollHero({
+      // 120 still frames live in assets/img/hero-frames/ (frame_001.jpg …).
+      frameCount: 120,
+      // Scroll length: one viewport per text beat, plus a tail.
+      vhPerStep: 100
+    });
+  </script>
 </body>
 </html>
