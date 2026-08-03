@@ -1,6 +1,1 @@
 .claude/
-
-# Source media for the Projects scroll hero — kept locally, not deployed.
-# The site ships the optimized JPEGs in assets/img/hero-frames/ instead.
-*.mp4
-Robot_Video_frames*.zip

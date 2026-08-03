@@ -186,6 +186,33 @@
 
   // Category display order used on the full Projects page.
   const PROJECT_CAT_ORDER = ["Machine Learning", "Web", "Python"];
+  const catSlug = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+  // Label + neon icon shown on the Projects page category stat cards.
+  const PROJECT_CAT_META = {
+    "Machine Learning": {
+      label: "Machine Learning Projects",
+      sub: "Research pipelines & model calibration",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 7V4M15 7V4M9 20v-3M15 20v-3M7 9H4M7 15H4M20 9h-3M20 15h-3"/><circle cx="12" cy="12" r="2"/></svg>',
+    },
+    Web: {
+      label: "Web Development Projects",
+      sub: "Full-stack web applications",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-6-3.8-9S9.5 5.7 12 3Z"/></svg>',
+    },
+    Python: {
+      label: "Python Projects",
+      sub: "Clean, focused Python tools",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9 4 3-4 3"/><path d="M13 15h4"/></svg>',
+    },
+  };
+
+  function orderedCategories() {
+    const present = new Set(PROJECTS.map((p) => p.category));
+    return PROJECT_CAT_ORDER.filter((c) => present.has(c)).concat(
+      [...present].filter((c) => !PROJECT_CAT_ORDER.includes(c))
+    );
+  }
 
   function renderFeaturedProjects() {
     const grid = $("#projects-grid");
@@ -193,17 +220,31 @@
     grid.innerHTML = PROJECTS.filter((p) => p.featured).map(projectCard).join("");
   }
 
+  function renderProjectStats() {
+    const box = $("#project-stats");
+    if (!box) return;
+    box.innerHTML = orderedCategories()
+      .map((cat, i) => {
+        const count = PROJECTS.filter((p) => p.category === cat).length;
+        const meta = PROJECT_CAT_META[cat] || { label: cat + " Projects", sub: "", icon: "" };
+        return `<a class="stat-card reveal d${(i % 4) + 1}" href="#cat-${catSlug(cat)}">
+          <span class="stat-icon">${meta.icon}</span>
+          <div class="stat-num" data-target="${count}" data-suffix="">0</div>
+          <div class="stat-label">${esc(meta.label)}</div>
+          <div class="stat-sub">${esc(meta.sub)}</div>
+        </a>`;
+      })
+      .join("");
+  }
+
   function renderAllProjects() {
     const box = $("#all-projects");
     if (!box) return;
-    const present = new Set(PROJECTS.map((p) => p.category));
-    const cats = PROJECT_CAT_ORDER.filter((c) => present.has(c)).concat(
-      [...present].filter((c) => !PROJECT_CAT_ORDER.includes(c))
-    );
+    const cats = orderedCategories();
     box.innerHTML = cats
       .map((cat) => {
         const items = PROJECTS.filter((p) => p.category === cat);
-        return `<div class="project-category">
+        return `<div class="project-category" id="cat-${catSlug(cat)}">
           <h3 class="cat-title reveal">${esc(cat)}</h3>
           <div class="projects-grid">${items.map(projectCard).join("")}</div>
         </div>`;
@@ -395,6 +436,7 @@
     renderExperienceStats();
     renderSkills();
     renderFeaturedProjects();
+    renderProjectStats();
     renderAllProjects();
     renderCertifications();
     renderContact();
