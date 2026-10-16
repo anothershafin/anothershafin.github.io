@@ -120,6 +120,22 @@
     ).join("");
   }
 
+  function renderOngoing() {
+    const box = $("#ongoing-grid");
+    if (!box || typeof ONGOING === "undefined") return;
+    box.innerHTML = ONGOING.map(
+      (w, i) => `<article class="ongoing-card reveal d${(i % 4) + 1}">
+        <div class="ongoing-top">
+          <span class="ongoing-type">${esc(w.type)}</span>
+          <span class="ongoing-status"><span class="dot"></span>${esc(w.status)}</span>
+        </div>
+        <h3>${esc(w.title)}</h3>
+        <p>${esc(w.description)}</p>
+        ${w.highlight ? `<span class="ongoing-highlight">${esc(w.highlight)}</span>` : ""}
+      </article>`
+    ).join("");
+  }
+
   function renderExperienceStats() {
     const box = $("#exp-stats");
     if (!box) return;
@@ -431,6 +447,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     renderHero();
     renderHeroPolaroid();
+    renderOngoing();
     renderAbout();
     renderExperience();
     renderExperienceStats();

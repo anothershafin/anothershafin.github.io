@@ -48,6 +48,33 @@ const SITE = {
 };
 
 /* ----------------------------------------------------------------------------
+   1b) ONGOING WORKS  (the cards between the hero and the About section)
+   type      -> small label at the top of the card
+   status    -> the pill next to it, e.g. "In progress"
+   highlight -> optional one-line callout ("" hides it)
+   ---------------------------------------------------------------------------- */
+const ONGOING = [
+  {
+    type: "Undergraduate Thesis",
+    status: "In progress",
+    title:
+      "MultiOmicsBridge: MNAR-Aware, Uncertainty-Calibrated Mosaic Integration of RNA-ATAC-Proteomics-Metabolomics",
+    description:
+      "Undergraduate thesis at BRAC University on integrating RNA, ATAC, proteomics and metabolomics data. The work for publication is still ongoing.",
+    highlight: "Graded 4/4",
+  },
+  {
+    type: "Research",
+    status: "In progress",
+    title:
+      "Benchmark audit and model evaluation for enhancer prediction: data overlap, training adequacy and assay transfer",
+    description:
+      "An audit of how enhancer-prediction models are benchmarked and evaluated. Not yet published, so details are kept brief for now.",
+    highlight: "",
+  },
+];
+
+/* ----------------------------------------------------------------------------
    2) ABOUT  (the paragraphs in the About section + quick facts)
    ---------------------------------------------------------------------------- */
 const ABOUT = {
