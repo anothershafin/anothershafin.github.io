@@ -187,7 +187,7 @@
     return `<article class="pcard reveal" data-cat="${esc(p.category)}">
       <div class="pcard-media">
         <div class="ph"><div class="pcard-ph-bg"></div><span class="pcard-ph-mono">${esc(initials(p.title))}</span></div>
-        <span class="pcard-cat">${esc(p.category)}</span>
+        <span class="pcard-cat">${esc(p.tag || p.category)}</span>
         ${img}
       </div>
       <div class="pcard-body">
@@ -201,14 +201,14 @@
   }
 
   // Category display order used on the full Projects page.
-  const PROJECT_CAT_ORDER = ["Machine Learning", "Web", "Python"];
+  const PROJECT_CAT_ORDER = ["AI/ML, Deep Learning", "Web", "Python"];
   const catSlug = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   // Label + neon icon shown on the Projects page category stat cards.
   const PROJECT_CAT_META = {
-    "Machine Learning": {
-      label: "Machine Learning Projects",
-      sub: "Research pipelines & model calibration",
+    "AI/ML, Deep Learning": {
+      label: "AI/ML & Deep Learning Projects",
+      sub: "ML pipelines, deep learning & model evaluation",
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 7V4M15 7V4M9 20v-3M15 20v-3M7 9H4M7 15H4M20 9h-3M20 15h-3"/><circle cx="12" cy="12" r="2"/></svg>',
     },
     Web: {

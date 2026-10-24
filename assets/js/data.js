@@ -32,7 +32,7 @@ const SITE = {
   location: "Dhaka, Bangladesh",
 
   // Contact + socials. Leave a value as "" to hide that link.
-  email: "shafin.official101@gmail.com",
+  email: "shafinahmed.research@gmail.com",
   phone: "", // optional, e.g. "+8801XXXXXXXXX"
   socials: {
     github: "https://github.com/anothershafin",
@@ -70,7 +70,7 @@ const ONGOING = [
       "Benchmark audit and model evaluation for enhancer prediction: data overlap, training adequacy and assay transfer",
     description:
       "An audit of how enhancer-prediction models are benchmarked and evaluated. Not yet published, so details are kept brief for now.",
-    highlight: "",
+    highlight: "Manuscript Submitted",
   },
 ];
 
@@ -218,7 +218,8 @@ const SKILL_GROUPS = [
    5) PROJECTS
    ---------------------------------------------------------------------------
    category  -> which group this shows under on the full Projects page. Keep
-               it one of: "Machine Learning", "Web", "Python"
+               it one of: "AI/ML, Deep Learning", "Web", "Python"
+   tag       -> optional badge text on the card image (defaults to category)
    featured  -> true = shown in the "Selected Projects" teaser on the home
                page (keep this to just 2-3 of your best projects). Every
                project — featured or not — always appears on projects.html.
@@ -229,11 +230,26 @@ const SKILL_GROUPS = [
    ---------------------------------------------------------------------------- */
 const PROJECTS = [
   {
+    title: "EEG Emotion Analysis",
+    org: "Independent Research",
+    period: "2026",
+    category: "AI/ML, Deep Learning",
+    tag: "ML+DL",
+    featured: true,
+    description:
+      "A reproducible EEG pipeline (MNE-Python, ICA) that tests whether ML baselines and the EEGNet deep network can predict emotion (valence and arousal) in unseen people, using leave-one-participant-out evaluation.",
+    tech: ["Machine Learning", "Deep Learning", "PyTorch", "EEGNet", "MNE-Python"],
+    image: "assets/img/EEG.png",
+    repo: "https://github.com/anothershafin/eeg-emotion-analysis",
+    demo: "",
+  },
+  {
     title:
       "Probability Calibration in Tree-Based Models",
     org: "BRAC University",
     period: "Nov 2025 – Dec 2025",
-    category: "Machine Learning",
+    category: "AI/ML, Deep Learning",
+    tag: "Machine Learning",
     featured: true,
     description:
       "A systematic evaluation of post-hoc probability calibration for tree-based models on binary and multiclass healthcare tasks. Using the CDC Diabetes Health Indicators 2023 data, we compare uncalibrated models with Platt (sigmoid) calibration and isotonic regression, evaluated via ROC-AUC, Brier score, ECE and reliability diagrams.",
@@ -246,7 +262,8 @@ const PROJECTS = [
     title: "Breast Cancer Prediction from Gene Expression",
     org: "BRAC University",
     period: "Aug 2025 – Sep 2025",
-    category: "Machine Learning",
+    category: "AI/ML, Deep Learning",
+    tag: "Machine Learning",
     featured: true,
     description:
       "A machine learning pipeline classifying breast cancer samples from high-dimensional RNA-seq gene expression (TCGA-BRCA). Includes rigorous preprocessing (log transform, feature filtering, mutual-information feature selection) and a comparison of Logistic Regression, XGBoost and a Neural Network under class imbalance.",
@@ -259,8 +276,8 @@ const PROJECTS = [
     title: "Loan Approval Prediction",
     org: "BRAC University · CSE422",
     period: "Jul 2025 – Sep 2025",
-    category: "Machine Learning",
-    featured: true,
+    category: "AI/ML, Deep Learning",
+    tag: "Machine Learning",
     description:
       "An end-to-end workflow predicting loan-approval eligibility. Handles class imbalance while optimizing Accuracy, Precision, Recall and ROC-AUC — covering data loading, EDA, cleaning, encoding, scaling, supervised modeling, metric visualization and an unsupervised KMeans baseline.",
     tech: ["Python", "Machine Learning", "EDA", "KMeans"],
